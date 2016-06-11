@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 angular.module('addTicketTickethunt', [])
 
 .directive('addTicket', function() {
@@ -8,6 +9,8 @@ angular.module('addTicketTickethunt', [])
     };
     
 =======
+=======
+>>>>>>> 49bc548d11bdd7e10bccbd586e86d0b480bbb523
 angular.module('tickethunt', [])
 
 .directive('site', function() {
@@ -15,5 +18,8 @@ angular.module('tickethunt', [])
         restrict: 'E',
         templateUrl: "/app/modules/claimTicket/template.html"
     };
+<<<<<<< HEAD
+>>>>>>> 49bc548d11bdd7e10bccbd586e86d0b480bbb523
+=======
 >>>>>>> 49bc548d11bdd7e10bccbd586e86d0b480bbb523
 });
