@@ -1,23 +1,10 @@
 
 angular.module('tickethunt', ['ngAnimate','ngMaterial','mapTickethunt','addTicketTickethunt', 'claimTickethunt'])
 
-.controller('mainCtrl', ['$scope', function($scope) {
+.controller('mainCtrl', ['$scope', function($scope, pathhelper) {
     $scope.welcome = true;
     $scope.site = false;
-
 }])
-"http[s]?:\/\/[a-z,A-Z,0-9,.,\/,^(?P=app)]*(?=\/app\/)/"
-
-    .factory('pathhelper', function(){
-        return {
-            getRootPath: function(){
-                var exp = /http[s]?:\/\/[a-z,A-Z,0-9,.,\/,^(?P=app)]*(?=\/app\/)/;
-                var arr = window.location.ToString().match(exp);
-                return arr[0];
-            }
-        }
-})
-
 
 .factory('TicketService', ['$resource', function ($resource) {
     "use strict";
@@ -33,6 +20,5 @@ angular.module('tickethunt', ['ngAnimate','ngMaterial','mapTickethunt','addTicke
             post: {method: 'POST'}
         }
 
-
-)
+);}]
 );
