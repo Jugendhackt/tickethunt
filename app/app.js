@@ -3,7 +3,9 @@ angular.module('tickethunt', ['ngAnimate','ngMaterial','mapTickethunt','addTicke
 
 .controller('mainCtrl', ['$scope', function($scope) {
     $scope.welcome = true;
-    $scope.site = false;
+    $scope.HansPeter= false;
+
+
 
 }])
 
@@ -23,4 +25,4 @@ angular.module('tickethunt', ['ngAnimate','ngMaterial','mapTickethunt','addTicke
 
 
 )
-);
+}]);
