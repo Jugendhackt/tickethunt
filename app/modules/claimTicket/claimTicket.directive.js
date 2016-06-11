@@ -3,7 +3,7 @@ angular.module('claimTickethunt', ['ui-notification'])
 .directive('claim',  function() {
     return {
         restrict: 'E',
-        templateUrl: "/app/modules/claimTicket/template.html",
+        templateUrl: "../app/modules/claimTicket/template.html",
         controller: function(Notification ,$scope){
             $scope.claimed = function(){
                 Notification.primary('You claimed this ticket');

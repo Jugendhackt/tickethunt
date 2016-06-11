@@ -3,7 +3,7 @@ angular.module('addTicketTickethunt',[])
 .directive('addTicket', function() {
     return {
         restrict: 'E',
-        templateUrl: "/app/modules/addTicket/addTicket.html",
+        templateUrl: "../../app/modules/addTicket/addTicket.html",
         controller: function ($scope) {
             $scope.getLocation = function () {
                  if (navigator.geolocation) {
