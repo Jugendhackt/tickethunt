@@ -22,5 +22,5 @@ angular.module('tickethunt', ['ngAnimate','mapTickethunt','addTicketTickethunt',
         }
 
 
-)
 );
+}]);
