@@ -24,19 +24,16 @@ angular.module('tickethunt', ['ngAnimate','ngMaterial','mapTickethunt','addTicke
         }
 
 )}])
-/*
-.factory('TicketType', ['$resource', function ($resource) {
+.factory('TicketService', ['$resource', function ($resource) {
     "use strict";
 
     return $resource(
-        'https://tmp.pajowu.de/api/tickettype/?format=json&:',
+        'https://tmp.pajowu.de/api/tickettype/:id?format=json&:search',
         {
-            id: "@id",
+            id: "@id",//ID of the Ticket-Type
+            search: "@query" //Search Ticket-Type by names and show_name
         },{
             get: {method: 'GET'},
             post: {method: 'POST'}
         }
-
-
-)
-)*/;
+)}]);
