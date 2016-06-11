@@ -37,9 +37,9 @@
 
     <map></map>
     <claim></claim>
-    <add-ticket></add-ticket>
+    <add-ticket ng-if = "HansPeter" style="position:fixed; top: 0%; left: 0%; bottom: 0%; right: 70%" ></add-ticket>
     <div style="position:fixed; bottom: 10%; right: 10%; z-index:800000">
-        <md-button class="md-fab" aria-label="add ticket">
+        <md-button  ng-click="HansPeter =! HansPeter" class="md-fab" aria-label="add ticket">
           <md-icon md-svg-src="/app/img/add.svg"></md-icon>
         </md-button>
     </div>

@@ -3,7 +3,8 @@ angular.module('tickethunt', ['ngAnimate','ngMaterial','mapTickethunt','addTicke
 
 .controller('mainCtrl', ['$scope', function($scope, pathhelper) {
     $scope.welcome = true;
-    $scope.site = false;
+    $scope.HansPeter= false;
+
 }])
 
 .factory('TicketService', ['$resource', function ($resource) {
@@ -20,5 +21,10 @@ angular.module('tickethunt', ['ngAnimate','ngMaterial','mapTickethunt','addTicke
             post: {method: 'POST'}
         }
 
-);
+
+    );
+
+
+
+
 }]);
