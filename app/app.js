@@ -1,9 +1,9 @@
 
-angular.module('tickethunt', ['ngAnimate','mapTickethunt','addTicketTickethunt', 'claimTickethunt'])
+angular.module('tickethunt', ['ngAnimate','ngMaterial','mapTickethunt','addTicketTickethunt', 'claimTickethunt'])
 
-.controller('mainCtrl', ['$scope', function($scope) {
+.controller('mainCtrl', ['$scope', function($scope, pathhelper) {
     $scope.welcome = true;
-    $scope.site = false;
+    $scope.HansPeter= false;
 
 }])
 
@@ -23,9 +23,7 @@ angular.module('tickethunt', ['ngAnimate','mapTickethunt','addTicketTickethunt',
             post: {method: 'POST'}
         }
 
-
-)
-)
+)])
 /*
 .factory('TicketType', ['$resource', function ($resource) {
     "use strict";
