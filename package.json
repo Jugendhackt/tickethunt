@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/Jugendhackt/tickethunt/issues"
   },
-  "homepage": "https://github.com/Jugendhackt/tickethunt#readme"
+  "homepage": "https://github.com/Jugendhackt/tickethunt#readme",
+  "dependencies": {
+    "angular": "^1.5.6",
+    "angular-animate": "^1.5.6",
+    "jquery": "^3.0.0",
+    "leaflet": "^0.7.7"
+  }
 }
