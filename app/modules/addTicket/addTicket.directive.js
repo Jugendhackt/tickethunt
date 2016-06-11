@@ -19,6 +19,9 @@ angular.module('addTicketTickethunt',[])
 
                 x.value = position.coords.latitude;
                 y.value = position.coords.longitude;
+
+                document.getElementById("coordsXl").addClass("md-input-focused", null);
+                document.getElementById("coordsYl").addClass("md-input-focused", null);
             }
 
             $scope.submitTicket = function () {

@@ -1,23 +1,22 @@
 
 
-<link rel="stylesheet" href="/app/modules/addTicket/addTicket.css"/>
-
-<div id="add-ticket-plane">
 
 
 <link rel="stylesheet" href="/node_modules/angular-material/angular-material.css"/>
 
 <div id="inputContainer">
 
+<div class="panel-heading">
 <h3> Add Ticket </h3>
-
+</div>
+<div class="panel-body">
 <md-content flex layout-padding>
 <form>
-    <md-input-container class="md-block">
+    <md-input-container id="coordsXl" class="md-block md-input-focused">
         <label id="coordsXl" style="float: right;"> Longitude: </label>
         <input readonly id="coordsX" type="text" value="42.000" ng-model="ticket.coordsNS" /> <br>
     </md-input-container>
-    <md-input-container class="md-block">
+    <md-input-container id="coordsYl" class="md-block md-input-focused">
         <label id="coordsYl" style="float: right;"> Latitude: </label>
         <input readonly id="coordsY" type="text" value="32.000" ng-model="ticket.coordsEW" /> <br/>
     </md-input-container>
@@ -59,10 +58,8 @@
 
 </form>
 
-</div>
-
-
 </md-content layout-padding>
+</div>
 
 </div>
 
