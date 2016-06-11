@@ -1,5 +1,5 @@
 
-angular.module('tickethunt', ['ngAnimate','mapTickethunt','addTicketTickethunt', 'claimTickethunt'])
+angular.module('tickethunt', ['ngAnimate','ngMaterial','mapTickethunt','addTicketTickethunt', 'claimTickethunt'])
 
 .controller('mainCtrl', ['$scope', function($scope) {
     $scope.welcome = true;
