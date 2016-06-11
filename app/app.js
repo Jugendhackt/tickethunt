@@ -20,5 +20,5 @@ angular.module('tickethunt', ['ngAnimate','ngMaterial','mapTickethunt','addTicke
             post: {method: 'POST'}
         }
 
-);}]
 );
+}]);
