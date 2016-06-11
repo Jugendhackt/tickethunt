@@ -1,33 +1,45 @@
-angular.module('addTicketTickethunt',[])
+angular.module('addTicketTickethunt', [])
 
-.directive('addTicket', function() {
-    return {
-        restrict: 'E',
-        templateUrl: "../app/modules/addTicket/addTicket.html",
-        controller: function ($scope) {
-            $scope.getLocation = function () {
-                 if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition($scope.fillCoords);
-                } else { 
-                 alert ("Geolocation is not supported by this browser.");
+    .directive('addTicket', ["TicketService", "TicketTypeService", function (TicketService, TicketTypeService) {
+        return {
+            restrict: 'E',
+            templateUrl: "../app/modules/addTicket/addTicket.html",
+            controller: function ($scope) {
+                $scope.ticket = {};
+                $scope.getLocation = function () {
+                    if (navigator.geolocation) {
+                        navigator.geolocation.getCurrentPosition($scope.fillCoords);
+                    } else {
+                        alert("Geolocation is not supported by this browser.");
+                    }
+                }
+
+                $scope.ticket.location = {
+                    "type": "Point",
+                    "coordinates": [
+                        null,
+                        null
+                    ]
+                }
+
+
+
+                $scope.fillCoords = function (position) {
+                    $scope.ticket.location.coordinates[0] = position.coords.latitude;
+                    $scope.ticket.location.coordinates[1] = position.coords.longitude;
+                }
+
+                $scope.submitTicket = function () {
+                    
+                    TicketService.post ($scope.ticket);
+
+                   // alert(JSON.stringify($scope.ticket));
+                    //               ticket.location = "POINT(" + document.getElementById("coordsX").value + " " + document.getElementById("coordsY").value + ")";
+                    //               ticket.persons = 
+
+                    alert("Submitted !" + document.getElementById("coordsX").value + "|" + document.getElementById("coordsY").value);
                 }
             }
+        };
 
-            $scope.fillCoords = function (position) {
-                var x = document.getElementById("coordsX");
-                var y = document.getElementById("coordsY");
-
-                x.value = position.coords.latitude;
-                y.value = position.coords.longitude;
-
-                document.getElementById("coordsXl").addClass("md-input-focused", null);
-                document.getElementById("coordsYl").addClass("md-input-focused", null);
-            }
-
-            $scope.submitTicket = function () {
-                alert ("Submitted !" + document.getElementById("coordsX").value + "|" + document.getElementById("coordsY").value);
-            }
-        }
-    };
-
-});
+    }]);

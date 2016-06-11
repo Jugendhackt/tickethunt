@@ -14,25 +14,21 @@
 <form>
     <md-input-container id="coordsXl" class="md-block md-input-focused">
         <label id="coordsXl" style="float: right;"> Longitude: </label>
-        <input readonly id="coordsX" type="text" value="42.000" ng-model="ticket.coordsNS" /> <br>
+        <input readonly id="coordsX" type="text" value="42.000" ng-model="ticket.location.coordinates[0]" /> <br>
     </md-input-container>
     <md-input-container id="coordsYl" class="md-block md-input-focused">
         <label id="coordsYl" style="float: right;"> Latitude: </label>
-        <input readonly id="coordsY" type="text" value="32.000" ng-model="ticket.coordsEW" /> <br/>
+        <input readonly id="coordsY" type="text" value="32.000" ng-model="ticket.location.coordinates[1]" /> <br/>
     </md-input-container>
    
    <md-button ng-click="getLocation()">Locate with GPS</md-button><br/>
    <br/>
-   <label> Valid Until: </label>
 
    <md-input-container class="md-block">
-    <label> Day </label><input required type="date" ng-model="ticket.validuntil" placeholder="2016-06-12"/><br />
+    <label> Valid Until </label><input id="datetime" required type="datetime-local" ng-model="ticket.valid_until" placeholder="2016-06-12"/><br />
    </md-input-container>
    <md-input-container class="md-block">
-    <label> Time </label> <input required type="time" ng-model="ticket.validuntil" placeholder="22:42:42"/><br />
-   </md-input-container>
-   <md-input-container class="md-block">
-    <label> Number of Persons:</label> <input type="number" ng-model="ticket.numberOfPeople" /><br />
+    <label> Number of Persons:</label> <input type="number" ng-model="ticket.persons" /><br />
    </md-input-container>
    <label>Image:</label> <br />
    <md-input-container class="md-block">
