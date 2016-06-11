@@ -19,6 +19,7 @@
   "dependencies": {
     "angular": "^1.5.6",
     "angular-animate": "^1.5.6",
+    "angular-ui-notification": "^0.2.0",
     "jquery": "^3.0.0",
     "leaflet": "^0.7.7"
   }
