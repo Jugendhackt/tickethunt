@@ -24,7 +24,7 @@ angular.module('tickethunt', ['ngAnimate','ngMaterial','mapTickethunt','addTicke
         }
 
 )}])
-.factory('TicketService', ['$resource', function ($resource) {
+.factory('TicketTypeService', ['$resource', function ($resource) {
     "use strict";
 
     return $resource(
