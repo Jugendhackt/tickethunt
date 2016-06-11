@@ -3,7 +3,7 @@
 
 <form>
     Geolocation: <input id="coordsX" type="text" ng-model="ticket.coordsNS" /><input id="coordsY" type="text" ng-model="ticket.coordsEW" /> <button ng-click="getLocation()">Locate</button><br />
-    Valid Until: <input type="datetime-local" ng-model="ticket.validuntil" placeholder="2016-06-12T22:42:42"/><br />
+    Valid Until: <input type="date" ng-model="ticket.validuntil" placeholder="2016-06-12"/><input type="time" ng-model="ticket.validuntil" placeholder="22:42:42"/><br />
     Number of Persons: <input type="number" ng-model="ticket.numberOfPeople" /><br />
     Image: <input type="file" ng-model="ticket.image" accept=".png, .jpg"/><br />
     Valid for: <input type="search" list="Zones"> 
