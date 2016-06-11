@@ -3,7 +3,7 @@ angular.module('mapTickethunt',[])
 .directive('map', ["TicketService", function(TicketService){
     return {
         restrict: 'E',
-        templateUrl: "/app/modules/map/template.html",
+        templateUrl: "../app/modules/map/template.html",
         controller: function($scope){
 
         
