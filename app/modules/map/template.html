@@ -1,1 +1,15 @@
-<p>hallo welt</p>
+<head><link rel="stylesheet" href="/app/modules/map/map.css"/></head>
+<body>
+<div id='map'></div>
+<script>
+var map = {};
+var OpenStreetMap = {};
+
+$(document).ready(function() {
+    map = L.map('map').setView([48.4222305, 9.95558200000005], 15);
+    // create the tile layer with correct attribution
+    OpenStreetMap = L.tileLayer('http://{s}.tile.openstreetmap.se/hydda/full/{z}/{x}/{y}.png', { maxZoom: 15, minZoom: 5, attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>' }).addTo(map);
+});
+
+</script>
+</body>
