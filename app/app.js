@@ -6,6 +6,18 @@ angular.module('tickethunt', ['ngAnimate','ngMaterial','mapTickethunt','addTicke
     $scope.site = false;
 
 }])
+"http[s]?:\/\/[a-z,A-Z,0-9,.,\/,^(?P=app)]*(?=\/app\/)/"
+
+    .factory('pathhelper', function(){
+        return {
+            getRootPath: function(){
+                var exp = /http[s]?:\/\/[a-z,A-Z,0-9,.,\/,^(?P=app)]*(?=\/app\/)/;
+                var arr = window.location.ToString().match(exp);
+                return arr[0];
+            }
+        }
+})
+
 
 .factory('TicketService', ['$resource', function ($resource) {
     "use strict";
