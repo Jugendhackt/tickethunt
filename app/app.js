@@ -5,4 +5,22 @@ angular.module('tickethunt', ['ngAnimate','ngMaterial','mapTickethunt','addTicke
     $scope.welcome = true;
     $scope.site = false;
 
-}]);
+}])
+
+.factory('TicketService', ['$resource', function ($resource) {
+    "use strict";
+
+    return $resource(
+        'https://tmp.pajowu.de/api/ticket/:id?format=json&:location',
+        {
+            id: "@id",
+            location: "@min_lat,@max_lat,@min_lon,@max_lon"
+        },{
+            get: {method: 'GET'},
+            delete: {method: 'DELETE'},
+            post: {method: 'POST'}
+        }
+
+
+)
+);
