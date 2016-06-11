@@ -9,7 +9,7 @@
     <link href="../node_modules/angular-ui-notification/dist/angular-ui-notification.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="../app/modules/map/map.css"/>
     <link rel="stylesheet" href="../app/modules/addTicket/addTicket.css"/>
-
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css"
     
     
     <script src='../node_modules/jquery/dist/jquery.min.js'></script>
@@ -37,14 +37,24 @@
 
 </head>
 <body  ng-controller="mainCtrl">
-
     <map></map>
-    <claim></claim>
-    <add-ticket ng-if = "HansPeter" style="position:fixed; top: 0%; left: 0%; bottom: 0%; right: 70%" ></add-ticket>
-    <div style="position:fixed; bottom: 10%; right: 10%; z-index:800000">
-        <md-button  ng-click="HansPeter =! HansPeter" class="md-fab" aria-label="add ticket">
-          <md-icon md-svg-src="../app/img/add.svg"></md-icon>
-        </md-button>
+    <div class="container-fluid">
+        
+        <div class="row">
+            <div class="col-md-12">
+                
+                <claim></claim>
+            </div>
+            <div class="col-md-3">
+                <add-ticket ng-if = "HansPeter" style="position:fixed; top: 0%; left: 0%; bottom: 0%; right: 70%" ></add-ticket>
+            </div>
+            <div style="position:fixed; bottom: 10%; right: 10%; z-index:800000">
+                <md-button  ng-click="HansPeter =! HansPeter" class="md-fab" aria-label="add ticket">
+                    <md-icon md-svg-src="../app/img/add.svg"></md-icon>
+                </md-button>
+            </div>
+            
+        </div>
     </div>
 
 </body>
