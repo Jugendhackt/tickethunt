@@ -1,18 +1,17 @@
-angular.module('tickethunt', [])
+angular.module('claimTickethunt', ['ui-notification'])
 
-.directive('site',  function() {
+.directive('claim',  function() {
     return {
         restrict: 'E',
         templateUrl: "/app/modules/claimTicket/template.html",
-        controller: function($scope){
+        controller: function(Notification ,$scope){
             $scope.claimed = function(){
-                alert ("fuba")
+                Notification.primary('You claimed this ticket');
+                
             }
         }
     };
-});
-/*
-angular.module('notificationTest', ['ui-notification'])
+})
     .config(function(NotificationProvider) {
         NotificationProvider.setOptions({
             delay: 10000,
@@ -20,8 +19,7 @@ angular.module('notificationTest', ['ui-notification'])
             startRight: 10,
             verticalSpacing: 20,
             horizontalSpacing: 20,
-            positionX: 'left',
+            positionX: 'right',
             positionY: 'top'
         });
     });
-    */
