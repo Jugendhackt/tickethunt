@@ -21,6 +21,7 @@
     "angular-animate": "^1.5.6",
     "angular-aria": "^1.5.6",
     "angular-material": "^1.1.0-rc.5",
+    "angular-resource": "^1.5.6",
     "angular-ui-notification": "^0.2.0",
     "bootstrap": "^3.3.6",
     "jquery": "^3.0.0",
