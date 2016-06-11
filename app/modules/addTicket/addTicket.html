@@ -1,17 +1,46 @@
-<head>    
+
+
 <link rel="stylesheet" href="/app/modules/addTicket/addTicket.css"/>
-</head>
-<body>
+
 <div id="add-ticket-plane">
 <div id="container">
+
+<link rel="stylesheet" href="/node_modules/angular-material/angular-material.css"/>
+
+<div id="inputContainer">
+
 <h3> Add Ticket </h3>
 
+<md-content flex layout-padding>
 <form>
-    Geolocation: <input id="coordsX" type="text" ng-model="ticket.coordsNS" /><input id="coordsY" type="text" ng-model="ticket.coordsEW" /> <button ng-click="getLocation()">Locate</button><br />
-    Valid Until: <input type="datetime-local" ng-model="ticket.validuntil" placeholder="2016-06-12T22:42:42"/><br />
-    Number of Persons: <input type="number" ng-model="ticket.numberOfPeople" /><br />
-    Image: <input type="file" ng-model="ticket.image" accept=".png, .jpg"/><br />
-    Valid for: <input type="search" list="Zones"> 
+    <md-input-container class="md-block">
+        <label id="coordsXl" style="float: right;"> Longitude: </label>
+        <input readonly id="coordsX" type="text" value="42.000" ng-model="ticket.coordsNS" /> <br>
+    </md-input-container>
+    <md-input-container class="md-block">
+        <label id="coordsYl" style="float: right;"> Latitude: </label>
+        <input readonly id="coordsY" type="text" value="32.000" ng-model="ticket.coordsEW" /> <br/>
+    </md-input-container>
+   
+   <md-button ng-click="getLocation()">Locate with GPS</md-button><br/>
+   <br/>
+   <label> Valid Until: </label>
+
+   <md-input-container class="md-block">
+    <label> Day </label><input required type="date" ng-model="ticket.validuntil" placeholder="2016-06-12"/><br />
+   </md-input-container>
+   <md-input-container class="md-block">
+    <label> Time </label> <input required type="time" ng-model="ticket.validuntil" placeholder="22:42:42"/><br />
+   </md-input-container>
+   <md-input-container class="md-block">
+    <label> Number of Persons:</label> <input type="number" ng-model="ticket.numberOfPeople" /><br />
+   </md-input-container>
+   <label>Image:</label> <br />
+   <md-input-container class="md-block">
+     <input type="file" ng-model="ticket.image" accept=".png, .jpg"/ style="align:center;"> <br />
+   </md-input-container>
+   <md-input-container class="md-block">
+    <label>Valid for:</label> <input type="search" list="Zones"> 
                     <datalist id="Zones"> 
                         <option value="BadenW&#252rtemberg"/>
                         <option value="Bayern"/>
@@ -22,10 +51,19 @@
                         <option value="Stuttgart"/>
                         <option value="Other"/>
                      </datalist> <br />
-    Comment: <textarea ng-model="ticket.comment"> </textarea> <br />
-    <button ng-click="submitTicket()">Submit</button>
+    </md-input-container>
+    <md-input-container class="md-block">
+    <label>Comment:</label> <textarea ng-model="ticket.comment"> </textarea> <br />
+    </md-input-container>
+    <md-button ng-click="submitTicket()">Submit</md-button>
 
 </form>
+<<<<<<< HEAD
 </div>
 </div>
 </body>
+=======
+</md-content layout-padding>
+
+</div>
+>>>>>>> 50acd91c8ae8b4775cf969da42a44fce334739d8

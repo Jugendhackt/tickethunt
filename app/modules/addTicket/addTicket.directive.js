@@ -22,7 +22,7 @@ angular.module('addTicketTickethunt',[])
             }
 
             $scope.submitTicket = function () {
-                alert ("Submitted !");
+                alert ("Submitted !" + document.getElementById("coordsX").value + "|" + document.getElementById("coordsY").value);
             }
         }
     };
