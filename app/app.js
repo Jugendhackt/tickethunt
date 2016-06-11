@@ -1,4 +1,4 @@
-angular.module('tickethunt', ['ngAnimate','jh-sample-welcome','jh-sample-site'])
+angular.module('tickethunt', ['ngAnimate','mapTickethunt'])
 
 .controller('mainCtrl', ['$scope', function($scope) {
     $scope.welcome = true;

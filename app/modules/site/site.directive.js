@@ -1,4 +1,4 @@
-angular.module('tickethunt', [])
+angular.module('tickethunt')
 
 .directive('site', function() {
     return {

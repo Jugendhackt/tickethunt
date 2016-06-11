@@ -1,6 +1,6 @@
-angular.module('tickethunt', [])
+angular.module('mapTickethunt',[])
 
-.directive('site', function() {
+.directive('map', function() {
     return {
         restrict: 'E',
         templateUrl: "/app/modules/map/template.html"
