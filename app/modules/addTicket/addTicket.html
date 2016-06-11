@@ -1,19 +1,21 @@
 <div>
 <h3> Add Ticket </h3>
 
-
-
-
 <form>
-    Geolocation: <input id="coordsX" type="text" ng-model="ticket.coordsNS" /><input type="text" ng-model="ticket.coordsEW" /> <!--<button onclick="getLocation()">Locate</button> --><br />
+    Geolocation: <input id="coordsX" type="text" ng-model="ticket.coordsNS" /><input id="coordsY" type="text" ng-model="ticket.coordsEW" /> <button ng-click="getLocation()">Locate</button><br />
     Valid Until: <input type="datetime-local" ng-model="ticket.validuntil" placeholder="2016-06-12T22:42:42"/><br />
     Number of Persons: <input type="number" ng-model="ticket.numberOfPeople" /><br />
     Image: <input type="file" ng-model="ticket.image" accept=".png, .jpg"/><br />
     Valid for: <input type="search" list="Zones"> 
                     <datalist id="Zones"> 
-                        <option value="BadenWuertemberg"/>
+                        <option value="BadenW&#252rtemberg"/>
                         <option value="Bayern"/>
+                        <option value="Deutschland"/>
+                        <option value="Frankfurt am Main"/>
                         <option value="Hessen"/>
+                        <option value="Konstanz"/>
+                        <option value="Stuttgart"/>
+                        <option value="Other"/>
                      </datalist> <br />
     Comment: <textarea ng-model="ticket.comment"> </textarea> <br />
     <button ng-click="submitTicket()">Submit</button>
