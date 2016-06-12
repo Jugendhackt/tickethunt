@@ -14,23 +14,27 @@ angular.module('addTicketTickethunt', [])
                     }
                 }
 
-                $scope.ticket.location = {
-                    "type": "Point",
-                    "coordinates": [
-                        null,
-                        null
-                    ]
-                }
-
-
+                //$scope.ticket.location = {latitude=null,longitude = null};
+                $scope.ticket.location = {};
 
                 $scope.fillCoords = function (position) {
-                    $scope.ticket.location.coordinates[0] = position.coords.latitude;
-                    $scope.ticket.location.coordinates[1] = position.coords.longitude;
+                    //{"location":"POINT(48.4235634 9.9570486)",
+                    
+
+                    alert (position.coords.latitude);
+                    alert($scope.ticket.location);
+
+                    $scope.ticket.location.latitude = position.coords.latitude;
+                    $scope.ticket.location.longitude = position.coords.longitude;
+
+                    
                 }
 
                 $scope.submitTicket = function () {
-                    
+                    var finalTicket = $scope.ticket;
+
+                    finalTicket.location = "POINT(" + $scope.ticket.location.latitude + " " + $scope.ticket.location.longitude + ")"
+
                     TicketService.post ($scope.ticket);
 
                    // alert(JSON.stringify($scope.ticket));

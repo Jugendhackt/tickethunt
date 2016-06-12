@@ -20,7 +20,12 @@ angular.module('mapTickethunt',[])
 			}
 			$scope.add_marker = function (singleTicket){
 				var LatLng = singleTicket.location.coordinates;
-				var type = singleTicket.ticket_type[0].show_name;
+				if (singleTicket.ticket_type[0]) {
+						var type = singleTicket.ticket_type[0].show_name;
+				} else {
+					var type = "Ticket"
+				}
+				
 				var valid_until = singleTicket.valid_until;
 				var marker = L.marker(LatLng).addTo($scope.map).on('click', function(e){
 					$scope.showclaim = true;

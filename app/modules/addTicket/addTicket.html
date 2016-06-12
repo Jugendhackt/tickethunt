@@ -14,11 +14,11 @@
 <form>
     <md-input-container id="coordsXl" class="md-block md-input-focused">
         <label id="coordsXl" style="float: right;"> Longitude: </label>
-        <input readonly id="coordsX" type="text" value="42.000" ng-model="ticket.location.coordinates[0]" /> <br>
+        <input readonly id="coordsX" type="text" value="42.000" ng-model="ticket.location.longitude" /> <br>
     </md-input-container>
     <md-input-container id="coordsYl" class="md-block md-input-focused">
         <label id="coordsYl" style="float: right;"> Latitude: </label>
-        <input readonly id="coordsY" type="text" value="32.000" ng-model="ticket.location.coordinates[1]" /> <br/>
+        <input readonly id="coordsY" type="text" value="32.000" ng-model="ticket.location.latitude" /> <br/>
     </md-input-container>
    
    <md-button ng-click="getLocation()">Locate with GPS</md-button><br/>
