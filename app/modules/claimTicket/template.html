@@ -1,3 +1,27 @@
 
-<h1>Claim Ticket</h1>
-<button ng-click="claimed('You claimed this ticket')">Claim</button>
+<md-dialog aria-label="List dialog">
+  <md-dialog-content>
+  	  <md-list>
+      <md-list-item>
+      	<p ng-if ="ticket.ticket_type[0].show_name">{{ticket.ticket_type[0].show_name}}</p>
+		<p ng-if ="!ticket.ticket_type[0].show_name">Ticket</p>
+
+      </md-list-item>
+      <md-list-item>
+      	<p>Gültig bis: {{ticket.valid_until | date: 'dd.MM.yyyy   HH:mm:ss'}}</p>
+
+      </md-list-item>
+
+    </md-list>
+		
+
+  
+   
+  </md-dialog-content>
+  <md-dialog-actions>
+    <md-button ng-click="claimed('You claimed this ticket')">Claim</md-button>
+    <md-button ng-click="closeDialog()" class="md-primary">Close Dialog</md-button>
+  </md-dialog-actions>
+</md-dialog>
+
+
