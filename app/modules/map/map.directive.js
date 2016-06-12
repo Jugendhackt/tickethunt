@@ -1,10 +1,10 @@
-angular.module('mapTickethunt',[])
+angular.module('mapTickethunt',['ui-notification'])
 
 .directive('map', ["TicketService", function(TicketService){
     return {
         restrict: 'E',
         templateUrl: "../app/modules/map/template.html",
-        controller: function($scope,$timeout,$mdDialog){
+        controller: function($scope,$timeout,$mdDialog,Notification){
 
 
         	$scope.map = null;
@@ -26,14 +26,25 @@ angular.module('mapTickethunt',[])
 						 templateUrl: "../app/modules/claimTicket/template.html",
 					
 						 locals: {
-						   ticket: singleTicket
+						   ticket: singleTicket, Notification:Notification
 					 	 },
-						 controller: function($scope, $mdDialog, ticket) {
+						 controller: function($scope, $mdDialog, ticket,Notification) {
 					        ticket.valid_until = new Date (ticket.valid_until);
 					        $scope.ticket = ticket;
 					        $scope.closeDialog = function() {
 					          $mdDialog.hide();
 					        }
+					        $scope.claimed = function(){
+					        	/*TicketService.delete({id: ticket.id}).$promise.then(function(response){
+									Notification.primary('You claimed this ticket');
+					                $scope.closeDialog();					        		
+					        	});*/
+					        	Notification.primary('You claimed this ticket');
+					            $scope.closeDialog();
+				               
+
+				            }
+
 					     }
 
 
@@ -86,4 +97,14 @@ angular.module('mapTickethunt',[])
             },0);
         }
     };
-}]);
+}]).config(function(NotificationProvider) {
+        NotificationProvider.setOptions({
+            delay: 10000,
+            startTop: 20,
+            startRight: 10,
+            verticalSpacing: 20,
+            horizontalSpacing: 20,
+            positionX: 'right',
+            positionY: 'top'
+        });
+});
