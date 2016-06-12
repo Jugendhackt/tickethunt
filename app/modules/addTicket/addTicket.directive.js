@@ -18,7 +18,15 @@ angular.module('addTicketTickethunt', ['ui-notification'])
             templateUrl: "../app/modules/addTicket/addTicket.html",
             controller: function ($scope) {
                 $scope.ticket = {};
+                    $scope.ticket.location = {};
 
+                    $scope.update_ticket_types = function () {
+                    TicketTypeService.get()
+                    .$promise
+                    .then(function(result){
+                           $scope.ticket_types = result;
+                    });
+		}
 
                 $scope.onLoad = function () {
 
@@ -30,14 +38,11 @@ angular.module('addTicketTickethunt', ['ui-notification'])
                     }
                 };
 
-                $scope.ticket.location = {};
-
                 $scope.getLocation = function () {
                     if (navigator.geolocation) {
                         if (navigator.geolocation.getCurrentPosition($scope.fillCoords)) {
 
                         } else {
-                            //  Notification.error ("Error while locating.");
                         }
                     } else {
                         Notification.error("Geolocation is not supported by this browser.");
@@ -47,7 +52,6 @@ angular.module('addTicketTickethunt', ['ui-notification'])
                 $scope.ticket.location = {};
 
                 $scope.fillCoords = function (position) {
-                    //{"location":"POINT(48.4235634 9.9570486)",
 
                     $scope.ticket.location.latitude = position.coords.latitude;
                     $scope.ticket.location.longitude = position.coords.longitude;
@@ -75,12 +79,8 @@ angular.module('addTicketTickethunt', ['ui-notification'])
                         finalTicket.location = "POINT(" + $scope.ticket.location.latitude + " " + $scope.ticket.location.longitude + ")"
 
                         TicketService.post($scope.ticket);
-
-                        // alert(JSON.stringify($scope.ticket));
-                        //               ticket.location = "POINT(" + document.getElementById("coordsX").value + " " + document.getElementById("coordsY").value + ")";
-                        //               ticket.persons = 
-
-                        HansPeter = !HansPeter;
+                        
+			HansPeter = !HansPeter;
                         Notification.success("Submitted ticket.");
                         TicketService.post($scope.ticket);
                         alert("Submitted !" + document.getElementById("coordsX").value + "|" + document.getElementById("coordsY").value);
