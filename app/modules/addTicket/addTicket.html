@@ -35,17 +35,10 @@
      <input type="file" ng-model="ticket.image" accept=".png, .jpg"/ style="align:center;"> <br />
    </md-input-container>
    <md-input-container class="md-block">
-    <label>Valid for:</label> <input type="search" list="Zones"> 
-                    <datalist id="Zones"> 
-                        <option value="BadenW&#252rtemberg"/>
-                        <option value="Bayern"/>
-                        <option value="Deutschland"/>
-                        <option value="Frankfurt am Main"/>
-                        <option value="Hessen"/>
-                        <option value="Konstanz"/>	
-                        <option value="Stuttgart"/>
-                        <option value="Other"/>
-                     </datalist> <br />
+    <label>Valid for:</label><br>
+      <select id="ticket_type" ng-model="ticket.ticket_type[0]">
+        <option ng-repeat="type in ticket_types" value="{{type.id}}">{{type.show_name}}</option>
+      </select>
     </md-input-container>
     <md-input-container class="md-block">
     <label>Comment:</label> <textarea ng-model="ticket.comment"> </textarea> <br />

@@ -33,7 +33,7 @@ angular.module('tickethunt', ['ngAnimate','ngMaterial','mapTickethunt','addTicke
             id: "@id",//ID of the Ticket-Type
             search: "@query" //Search Ticket-Type by names and show_name
         },{
-            get: {method: 'GET'},
+            get: {method: 'GET', isArray: true},
             post: {method: 'POST'}
         }
 )}]);
