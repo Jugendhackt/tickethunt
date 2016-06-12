@@ -19,6 +19,7 @@ angular.module('addTicketTickethunt', ['ui-notification'])
             controller: function ($scope) {
                 $scope.ticket = {};
 
+
                 $scope.onLoad = function () {
 
                     const input = document.getElementById("imgUpload");
@@ -29,7 +30,7 @@ angular.module('addTicketTickethunt', ['ui-notification'])
                     }
                 };
 
-
+                $scope.ticket.location = {};
 
                 $scope.getLocation = function () {
                     if (navigator.geolocation) {
@@ -52,6 +53,20 @@ angular.module('addTicketTickethunt', ['ui-notification'])
                     $scope.ticket.location.longitude = position.coords.longitude;
 
                     $scope.$apply();
+                $scope.update_ticket_types = function () {
+                    TicketTypeService.get()
+                    .$promise
+                    .then(function(result){
+                        $scope.ticket_types = result;
+                    });
+		}
+
+                $scope.fillCoords = function (position) {
+                    alert (position.coords.latitude);
+                    alert($scope.ticket.location);
+
+                    $scope.ticket.location.latitude = position.coords.latitude;
+                    $scope.ticket.location.longitude = position.coords.longitude;
                 }
 
                 $scope.submitTicket = function () {
@@ -67,9 +82,9 @@ angular.module('addTicketTickethunt', ['ui-notification'])
 
                     HansPeter = !HansPeter;
                     Notification.success("Submitted ticket.");
+                    TicketService.post ($scope.ticket);
+                    alert("Submitted !" + document.getElementById("coordsX").value + "|" + document.getElementById("coordsY").value);
                 }
-            }
-        };
-
-    }]);
+                $scope.update_ticket_types();
+        }]);
 
