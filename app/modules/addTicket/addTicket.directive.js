@@ -18,15 +18,15 @@ angular.module('addTicketTickethunt', ['ui-notification'])
             templateUrl: "../app/modules/addTicket/addTicket.html",
             controller: function ($scope) {
                 $scope.ticket = {};
-                    $scope.ticket.location = {};
+                $scope.ticket.location = {};
 
-                    $scope.update_ticket_types = function () {
+                $scope.update_ticket_types = function () {
                     TicketTypeService.get()
                     .$promise
                     .then(function(result){
-                           $scope.ticket_types = result;
+                        $scope.ticket_types = result;
                     });
-		}
+		};
 
                 $scope.onLoad = function () {
 
@@ -49,20 +49,12 @@ angular.module('addTicketTickethunt', ['ui-notification'])
                     }
                 }
 
-                $scope.ticket.location = {};
-
                 $scope.fillCoords = function (position) {
 
                     $scope.ticket.location.latitude = position.coords.latitude;
                     $scope.ticket.location.longitude = position.coords.longitude;
 
                     $scope.$apply();
-                    $scope.update_ticket_types = function () {
-                        TicketTypeService.get()
-                            .$promise
-                            .then(function (result) {
-                                $scope.ticket_types = result;
-                            });
                     }
 
                     $scope.fillCoords = function (position) {
@@ -86,8 +78,7 @@ angular.module('addTicketTickethunt', ['ui-notification'])
                         alert("Submitted !" + document.getElementById("coordsX").value + "|" + document.getElementById("coordsY").value);
                     }
                     $scope.update_ticket_types();
-                };
+                }
             }
-        };
     }]);
 
