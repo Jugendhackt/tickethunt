@@ -4,7 +4,7 @@ angular.module('mapTickethunt',[])
     return {
         restrict: 'E',
         templateUrl: "../app/modules/map/template.html",
-        controller: function($scope,$timeout){
+        controller: function($scope,$timeout,$mdDialog){
 
         
 
@@ -23,8 +23,30 @@ angular.module('mapTickethunt',[])
 				var type = singleTicket.ticket_type[0].show_name;
 				var valid_until = singleTicket.valid_until;
 				var marker = L.marker(LatLng).addTo($scope.map).on('click', function(e){
-					$scope.showclaim = true;
-					console.log($scope.showclaim);
+					var parentEl = angular.element(document.body);
+					$mdDialog.show({
+					 parent: parentEl,
+					 targetEvent: $event,
+					 template:
+					   '<md-dialog aria-label="List dialog">' +
+					   '  <md-dialog-content>'+
+					   '    <md-list>'+
+					   '      <md-list-item ng-repeat="item in items">'+
+					   '       <p>Number {{item}}</p>' +
+					   '      '+
+					   '    </md-list-item></md-list>'+
+					   '  </md-dialog-content>' +
+					   '  <md-dialog-actions>' +
+					   '    <md-button ng-click="closeDialog()" class="md-primary">' +
+					   '      Close Dialog' +
+					   '    </md-button>' +
+					   '  </md-dialog-actions>' +
+					   '</md-dialog>',
+					 locals: {
+					   items: $scope.items
+					 }
+
+					});
 				});
 				return marker;
 			}
