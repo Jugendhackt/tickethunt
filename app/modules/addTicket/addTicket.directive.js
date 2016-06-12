@@ -1,33 +1,57 @@
-angular.module('addTicketTickethunt', [])
+angular.module('addTicketTickethunt', ['ui-notification'])
 
-    .directive('addTicket', ["TicketService", "TicketTypeService", function (TicketService, TicketTypeService) {
+    .config(function (NotificationProvider) {
+        NotificationProvider.setOptions({
+            delay: 10000,
+            startTop: 20,
+            startRight: 10,
+            verticalSpacing: 20,
+            horizontalSpacing: 20,
+            positionX: 'right',
+            positionY: 'top'
+        });
+    })
+
+    .directive('addTicket', ["TicketService", "TicketTypeService", "Notification", function (TicketService, TicketTypeService, Notification) {
         return {
             restrict: 'E',
             templateUrl: "../app/modules/addTicket/addTicket.html",
             controller: function ($scope) {
                 $scope.ticket = {};
+
+                $scope.onLoad = function () {
+
+                    const input = document.getElementById("imgUpload");
+                    const button = document.getElementById("uploadButton");
+
+                    if (input.length && button.length) {
+                        button.click((e) => input.click());
+                    }
+                };
+
+
+
                 $scope.getLocation = function () {
                     if (navigator.geolocation) {
-                        navigator.geolocation.getCurrentPosition($scope.fillCoords);
+                        if (navigator.geolocation.getCurrentPosition($scope.fillCoords)) {
+
+                        } else {
+                            //  Notification.error ("Error while locating.");
+                        }
                     } else {
-                        alert("Geolocation is not supported by this browser.");
+                        Notification.error("Geolocation is not supported by this browser.");
                     }
                 }
 
-                //$scope.ticket.location = {latitude=null,longitude = null};
                 $scope.ticket.location = {};
 
                 $scope.fillCoords = function (position) {
                     //{"location":"POINT(48.4235634 9.9570486)",
-                    
-
-                    alert (position.coords.latitude);
-                    alert($scope.ticket.location);
 
                     $scope.ticket.location.latitude = position.coords.latitude;
                     $scope.ticket.location.longitude = position.coords.longitude;
 
-                    
+                    $scope.$apply();
                 }
 
                 $scope.submitTicket = function () {
@@ -35,15 +59,17 @@ angular.module('addTicketTickethunt', [])
 
                     finalTicket.location = "POINT(" + $scope.ticket.location.latitude + " " + $scope.ticket.location.longitude + ")"
 
-                    TicketService.post ($scope.ticket);
+                    TicketService.post($scope.ticket);
 
-                   // alert(JSON.stringify($scope.ticket));
+                    // alert(JSON.stringify($scope.ticket));
                     //               ticket.location = "POINT(" + document.getElementById("coordsX").value + " " + document.getElementById("coordsY").value + ")";
                     //               ticket.persons = 
 
-                    alert("Submitted !" + document.getElementById("coordsX").value + "|" + document.getElementById("coordsY").value);
+                    HansPeter = !HansPeter;
+                    Notification.success("Submitted ticket.");
                 }
             }
         };
 
     }]);
+

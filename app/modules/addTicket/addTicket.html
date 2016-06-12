@@ -1,10 +1,6 @@
-
-
-
-
 <link rel="stylesheet" href="/node_modules/angular-material/angular-material.css"/>
 
-<div id="inputContainer">
+<div id="inputContainer" class="panel panel-default" style="background-color:#ffffff;" ng-init>
 
 <div class="panel-heading">
 <h3> Add Ticket </h3>
@@ -28,11 +24,11 @@
     <label> Valid Until </label><input id="datetime" required type="datetime-local" ng-model="ticket.valid_until" placeholder="2016-06-12"/><br />
    </md-input-container>
    <md-input-container class="md-block">
-    <label> Number of Persons:</label> <input type="number" ng-model="ticket.persons" /><br />
+    <label> Number of Persons:</label> <input type="number" min="0" max="100" ng-model="ticket.persons" /><br />
    </md-input-container>
    <label>Image:</label> <br />
    <md-input-container class="md-block">
-     <input type="file" ng-model="ticket.image" accept=".png, .jpg"/ style="align:center;"> <br />
+     <input type="file" id="imgUpload" ng-model="ticket.image" accept=".png, .jpg" class="md-button" style="align:left;"> 
    </md-input-container>
    <md-input-container class="md-block">
     <label>Valid for:</label> <input type="search" list="Zones"> 
@@ -58,4 +54,3 @@
 </div>
 
 </div>
-
