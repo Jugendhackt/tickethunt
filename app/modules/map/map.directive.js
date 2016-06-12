@@ -19,35 +19,23 @@ angular.module('mapTickethunt',[])
 			}
 			$scope.add_marker = function (singleTicket){
 				var LatLng = singleTicket.location.coordinates;
-				if (singleTicket.ticket_type[0]) {
-                        var type = singleTicket.ticket_type[0].show_name;
-                } else {
-                    var type = "Ticket"
-                }
-				var valid_until = singleTicket.valid_until;
 				var marker = L.marker(LatLng).addTo($scope.map).on('click', function(e){
 					var parentEl = angular.element(document.body);
 					$mdDialog.show({
-					 parent: parentEl,
-					 targetEvent: $event,
-					 template:
-					   '<md-dialog aria-label="List dialog">' +
-					   '  <md-dialog-content>'+
-					   '    <md-list>'+
-					   '      <md-list-item ng-repeat="item in items">'+
-					   '       <p>Number {{item}}</p>' +
-					   '      '+
-					   '    </md-list-item></md-list>'+
-					   '  </md-dialog-content>' +
-					   '  <md-dialog-actions>' +
-					   '    <md-button ng-click="closeDialog()" class="md-primary">' +
-					   '      Close Dialog' +
-					   '    </md-button>' +
-					   '  </md-dialog-actions>' +
-					   '</md-dialog>',
-					 locals: {
-					   items: $scope.items
-					 }
+						 parent: parentEl,
+						 templateUrl: "../app/modules/claimTicket/template.html",
+					
+						 locals: {
+						   ticket: singleTicket
+					 	 },
+						 controller: function($scope, $mdDialog, ticket) {
+					        ticket.valid_until = new Date (ticket.valid_until);
+					        $scope.ticket = ticket;
+					        $scope.closeDialog = function() {
+					          $mdDialog.hide();
+					        }
+					     }
+
 
 					});
 				});
