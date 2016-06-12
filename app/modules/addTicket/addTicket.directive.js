@@ -1,46 +1,93 @@
-angular.module('addTicketTickethunt', [])
+angular.module('addTicketTickethunt', ['ui-notification'])
 
-    .directive('addTicket', ["TicketService", "TicketTypeService", function (TicketService, TicketTypeService) {
+    .config(function (NotificationProvider) {
+        NotificationProvider.setOptions({
+            delay: 10000,
+            startTop: 20,
+            startRight: 10,
+            verticalSpacing: 20,
+            horizontalSpacing: 20,
+            positionX: 'right',
+            positionY: 'top'
+        });
+    })
+
+    .directive('addTicket', ["TicketService", "TicketTypeService", "Notification", function (TicketService, TicketTypeService, Notification) {
         return {
             restrict: 'E',
             templateUrl: "../app/modules/addTicket/addTicket.html",
             controller: function ($scope) {
                 $scope.ticket = {};
+
+
+                $scope.onLoad = function () {
+
+                    const input = document.getElementById("imgUpload");
+                    const button = document.getElementById("uploadButton");
+
+                    if (input.length && button.length) {
+                        button.click((e) => input.click());
+                    }
+                };
+
                 $scope.ticket.location = {};
+
                 $scope.getLocation = function () {
                     if (navigator.geolocation) {
-                        navigator.geolocation.getCurrentPosition($scope.fillCoords);
+                        if (navigator.geolocation.getCurrentPosition($scope.fillCoords)) {
+
+                        } else {
+                            //  Notification.error ("Error while locating.");
+                        }
                     } else {
-                        alert("Geolocation is not supported by this browser.");
+                        Notification.error("Geolocation is not supported by this browser.");
                     }
                 }
 
-                $scope.update_ticket_types = function () {
-                    TicketTypeService.get()
-                    .$promise
-                    .then(function(result){
-                        $scope.ticket_types = result;
-                    });
-		}
+                $scope.ticket.location = {};
 
                 $scope.fillCoords = function (position) {
-                    alert (position.coords.latitude);
-                    alert($scope.ticket.location);
+                    //{"location":"POINT(48.4235634 9.9570486)",
 
                     $scope.ticket.location.latitude = position.coords.latitude;
                     $scope.ticket.location.longitude = position.coords.longitude;
-                }
 
-                $scope.submitTicket = function () {
-                    var finalTicket = $scope.ticket;
+                    $scope.$apply();
+                    $scope.update_ticket_types = function () {
+                        TicketTypeService.get()
+                            .$promise
+                            .then(function (result) {
+                                $scope.ticket_types = result;
+                            });
+                    }
 
-                    finalTicket.location = "POINT(" + $scope.ticket.location.latitude + " " + $scope.ticket.location.longitude + ")"
+                    $scope.fillCoords = function (position) {
+                        alert(position.coords.latitude);
+                        alert($scope.ticket.location);
 
-                    TicketService.post ($scope.ticket);
-                    alert("Submitted !" + document.getElementById("coordsX").value + "|" + document.getElementById("coordsY").value);
-                }
-                $scope.update_ticket_types();
+                        $scope.ticket.location.latitude = position.coords.latitude;
+                        $scope.ticket.location.longitude = position.coords.longitude;
+                    }
+
+                    $scope.submitTicket = function () {
+                        var finalTicket = $scope.ticket;
+
+                        finalTicket.location = "POINT(" + $scope.ticket.location.latitude + " " + $scope.ticket.location.longitude + ")"
+
+                        TicketService.post($scope.ticket);
+
+                        // alert(JSON.stringify($scope.ticket));
+                        //               ticket.location = "POINT(" + document.getElementById("coordsX").value + " " + document.getElementById("coordsY").value + ")";
+                        //               ticket.persons = 
+
+                        HansPeter = !HansPeter;
+                        Notification.success("Submitted ticket.");
+                        TicketService.post($scope.ticket);
+                        alert("Submitted !" + document.getElementById("coordsX").value + "|" + document.getElementById("coordsY").value);
+                    }
+                    $scope.update_ticket_types();
+                };
             }
         };
-
     }]);
+
