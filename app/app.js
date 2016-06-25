@@ -11,7 +11,7 @@ angular.module('tickethunt', ['ngAnimate','ngMaterial','mapTickethunt','addTicke
     "use strict";
 
     return $resource(
-        'https://tmp.pajowu.de/api/ticket/:id?format=json&:ticket_type&:min_valid',
+        'https://tickethunt.pajowu.de/api/ticket/:id?format=json&:ticket_type&:min_valid',
         {
             id: "@id",//ID of the Tickets
             ticket_type: "@type",//Type of the Tickets, get avaible types from 'TicketType'
@@ -27,7 +27,7 @@ angular.module('tickethunt', ['ngAnimate','ngMaterial','mapTickethunt','addTicke
     "use strict";
 
     return $resource(
-        'https://tmp.pajowu.de/api/tickettype/:id?format=json&:search',
+        'https://tickethunt.pajowu.de/api/tickettype/:id?format=json&:search',
         {
             id: "@id",//ID of the Ticket-Type
             search: "@query" //Search Ticket-Type by names and show_name
