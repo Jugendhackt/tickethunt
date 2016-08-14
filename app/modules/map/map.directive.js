@@ -77,7 +77,7 @@ angular.module('mapTickethunt',['ui-notification'])
             }
 
             $timeout(function() {
-                $scope.map = L.map('map').setView([50, 10], 15);
+                $scope.map = L.map('map').setView([51, 10], 7);
                 // create the tile layer with correct attribution
                 $scope.OpenStreetMap = L.tileLayer('http://{s}.tile.openstreetmap.se/hydda/full/{z}/{x}/{y}.png', { maxZoom: 25, minZoom: 5, attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>' }).addTo($scope.map);
 
