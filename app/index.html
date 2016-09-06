@@ -8,6 +8,7 @@
     <title>tickethunt</title>
 
     <link rel="stylesheet" href="../app/css/animate.css"/>
+    <link rel="stylesheet" href="../app/css/style.css"/>
     <link rel="stylesheet" href="../node_modules/leaflet/dist/leaflet.css"/>
     <link rel="stylesheet" href="../node_modules/angular-material/angular-material.css"/>
     <link rel="stylesheet" href="../node_modules/angular-ui-notification/dist/angular-ui-notification.css"/>
@@ -51,12 +52,8 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-12">
-                <map></map>
-                
-            </div>
-
-            <div style="position:fixed; bottom: 25px; right: 25px; z-index:800000">
+            <map></map>
+            <div id="addButton">
                 <md-button ng-click="HansPeter =! HansPeter" class="md-fab" aria-label="add ticket">
                     <md-icon md-svg-src="../app/img/add.svg"></md-icon>
                 </md-button>
@@ -64,11 +61,10 @@
 
         </div>
     </div>
-    <div ng-if="HansPeter" class="container-fluid" style="position:fixed; top: 0; left: 0; right: 0; bottom: 0;">
-
+    <div ng-if="HansPeter" class="container-fluid" id="addTicketContatiner">
         <div class="row">
-            <div class="col-lg-4">
-                <add-ticket style=" background-color: #ffffff; z-index:90000;"></add-ticket>
+            <div class="col-lg-4" style="padding-left: 0px">
+                <add-ticket id="addTicket"></add-ticket>
             </div>
         </div>
     </div>
